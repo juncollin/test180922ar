@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A33798812156650F0038EEB3 /* Plane.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33798802156650F0038EEB3 /* Plane.swift */; };
+		A337988321566C890038EEB3 /* VirtualObjectInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A337988221566C890038EEB3 /* VirtualObjectInteraction.swift */; };
+		A337988521566D1D0038EEB3 /* ThresholdPanGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = A337988421566D1D0038EEB3 /* ThresholdPanGesture.swift */; };
+		A3379887215671830038EEB3 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3379886215671830038EEB3 /* Utilities.swift */; };
+		A3379889215678410038EEB3 /* VirtualObjectARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3379888215678410038EEB3 /* VirtualObjectARView.swift */; };
 		A3C70A3621563E92003876D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C70A3521563E92003876D6 /* AppDelegate.swift */; };
 		A3C70A3821563E92003876D6 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = A3C70A3721563E92003876D6 /* art.scnassets */; };
 		A3C70A3A21563E92003876D6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C70A3921563E92003876D6 /* ViewController.swift */; };
@@ -35,6 +40,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A33798802156650F0038EEB3 /* Plane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plane.swift; sourceTree = "<group>"; };
+		A337988221566C890038EEB3 /* VirtualObjectInteraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualObjectInteraction.swift; sourceTree = "<group>"; };
+		A337988421566D1D0038EEB3 /* ThresholdPanGesture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThresholdPanGesture.swift; sourceTree = "<group>"; };
+		A3379886215671830038EEB3 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		A3379888215678410038EEB3 /* VirtualObjectARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualObjectARView.swift; sourceTree = "<group>"; };
 		A3C70A3221563E92003876D6 /* test180922ar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = test180922ar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3C70A3521563E92003876D6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A3C70A3721563E92003876D6 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -101,11 +111,16 @@
 			children = (
 				A3C70A3521563E92003876D6 /* AppDelegate.swift */,
 				A3C70A3721563E92003876D6 /* art.scnassets */,
-				A3C70A3921563E92003876D6 /* ViewController.swift */,
 				A3C70A3B21563E92003876D6 /* Main.storyboard */,
 				A3C70A3E21563E93003876D6 /* Assets.xcassets */,
 				A3C70A4021563E93003876D6 /* LaunchScreen.storyboard */,
 				A3C70A4321563E93003876D6 /* Info.plist */,
+				A33798802156650F0038EEB3 /* Plane.swift */,
+				A3C70A3921563E92003876D6 /* ViewController.swift */,
+				A337988221566C890038EEB3 /* VirtualObjectInteraction.swift */,
+				A337988421566D1D0038EEB3 /* ThresholdPanGesture.swift */,
+				A3379886215671830038EEB3 /* Utilities.swift */,
+				A3379888215678410038EEB3 /* VirtualObjectARView.swift */,
 			);
 			path = test180922ar;
 			sourceTree = "<group>";
@@ -260,8 +275,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A3379889215678410038EEB3 /* VirtualObjectARView.swift in Sources */,
+				A3379887215671830038EEB3 /* Utilities.swift in Sources */,
 				A3C70A3A21563E92003876D6 /* ViewController.swift in Sources */,
+				A33798812156650F0038EEB3 /* Plane.swift in Sources */,
 				A3C70A3621563E92003876D6 /* AppDelegate.swift in Sources */,
+				A337988521566D1D0038EEB3 /* ThresholdPanGesture.swift in Sources */,
+				A337988321566C890038EEB3 /* VirtualObjectInteraction.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -367,7 +387,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -422,7 +442,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -439,13 +459,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 424TZ7WCP4;
 				INFOPLIST_FILE = test180922ar/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.collindo.test180922ar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -457,13 +478,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 424TZ7WCP4;
 				INFOPLIST_FILE = test180922ar/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.collindo.test180922ar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

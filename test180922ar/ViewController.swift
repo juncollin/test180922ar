@@ -10,9 +10,20 @@ import UIKit
 import SceneKit
 import ARKit
 
-class ViewController: UIViewController, ARSCNViewDelegate {
+public var textNode : SCNNode?
 
-    @IBOutlet var sceneView: ARSCNView!
+class ViewController: UIViewController, ARSCNViewDelegate {
+    
+    @IBOutlet var sceneView: VirtualObjectARView!
+    lazy var virtualObjectInteraction = VirtualObjectInteraction(sceneView: sceneView)
+    var screenCenter: CGPoint {
+        let bounds = sceneView.bounds
+        return CGPoint(x: bounds.midX, y: bounds.midY)
+    }
+
+    /// A serial queue used to coordinate adding or removing nodes from the scene.
+    let updateQueue = DispatchQueue(label: "com.example.apple-samplecode.arkitexample.serialSceneKitQueue")
+    var plane: Plane?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,18 +35,19 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         sceneView.showsStatistics = true
         
         // Create a new scene
-        let scene = SCNScene(named: "art.scnassets/ship.scn")!
+        let scene = SCNScene()
+//        let scene = SCNScene(named: "art.scnassets/ship.scn")!
         
         // Set the scene to the view
         sceneView.scene = scene
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         // Create a session configuration
         let configuration = ARWorldTrackingConfiguration()
-
+        configuration.planeDetection = .horizontal
         // Run the view's session
         sceneView.session.run(configuration)
     }
@@ -47,6 +59,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         sceneView.session.pause()
     }
 
+    
     // MARK: - ARSCNViewDelegate
     
 /*
@@ -71,5 +84,50 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     func sessionInterruptionEnded(_ session: ARSession) {
         // Reset tracking and/or remove existing anchors if consistent tracking is required
         
+    }
+    
+    
+    func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
+        guard let planeAnchor = anchor as? ARPlaneAnchor else { return }
+        
+        if plane == nil {
+            plane = Plane(anchor: planeAnchor)
+            virtualObjectInteraction.translate(plane!, basedOn: screenCenter, infinitePlane: false, allowAnimation: false)
+            
+            updateQueue.async {
+                self.sceneView.scene.rootNode.addChildNode(self.plane!)
+                self.sceneView.addOrUpdateAnchor(for: self.plane!)
+            }
+//            plane = Plane(anchor: planeAnchor)
+//            node.addChildNode(plane!)
+            
+//            virtualObjectInteraction.translate(plane!, basedOn: screenCenter!, infinitePlane: false, allowAnimation: false)
+        }
+    }
+    
+    func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
+//        if plane!.anchor.identifier == anchor.identifier,
+//            let planeAnchor = anchor as? ARPlaneAnchor {
+//            plane!.update(anchor: planeAnchor)
+//
+//            DispatchQueue.main.async {
+//                self.virtualObjectInteraction.updateObjectToCurrentTrackingPosition()
+//            }
+//        }
+        
+            if let planeAnchor = anchor as? ARPlaneAnchor {
+                plane!.adjustOntoPlaneAnchor(planeAnchor, using: node)
+            } else {
+//                if let objectAtAnchor = plane {
+//                    objectAtAnchor.simdPosition = anchor.transform.translation
+//                    objectAtAnchor.anchor = anchor
+//                }
+            }
+    }
+    
+    func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
+        DispatchQueue.main.async {
+            self.virtualObjectInteraction.updateObjectToCurrentTrackingPosition()
+        }
     }
 }
